@@ -15,7 +15,7 @@ export const Controlado = () => {
     // El "e.target.value" almacena le valor recolectado
     const handleChange = (e) => {
 
-        // desestructuracion de r, ya que este almacena type, value, checked, name
+        // desestructuracion de e.target, ya que este almacena type, value, checked, name
         const {type, value, checked, name} = e.target
 
         setTodo({
