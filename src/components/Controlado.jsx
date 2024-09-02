@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
+import Swal from 'sweetalert2';
 
-export const Controlado = () => {
+const Controlado = ({addTodo}) => {
 
     const [todo, setTodo] = useState({
         title: "",
@@ -30,6 +32,29 @@ export const Controlado = () => {
     const handleSubmit = (e) =>{
     e.preventDefault()
     console.log(title, description, state, priority)
+
+    if(!title.trim() || !description.trim()){
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops',
+        text: 'Titulo y descripcion obligatorios',
+      });
+    }
+
+    addTodo({
+      id: Date.now(),
+      ...todo,
+      state: state === 'Completado'
+    })
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Todo agregado correctamente",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
     }
 
   return (
@@ -74,7 +99,7 @@ export const Controlado = () => {
         <option value="Completado"> Completado</option>
       </select>
 
-      <button type='submit' className='btn btn-primary'> Procesar</button>
+      <button type='submit' className='btn btn-primary'> Agregar Todo</button>
 
    </form>
   )
