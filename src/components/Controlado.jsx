@@ -94,7 +94,6 @@ const Controlado = ({addTodo}) => {
 
       {/* <select> Se usa para un formulario de opciones ya predefinidas */}
       <select className='form-select mb2' name='state' value={state} onChange={handleChange}> 
-        <option value="Vacio"> --</option>
         <option value="Pendiente"> Pendiente</option>
         <option value="Completado"> Completado</option>
       </select>
